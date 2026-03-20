@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroSense Dashboard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F7F9F7; color: #1a1a1a; }
+.header { padding: 1.5rem; background: white; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon { width: 36px; height: 36px; background: #2D6A4F; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 20px; font-weight: 600; color: #1a1a1a; }
+.logo-sub { font-size: 12px; color: #6b7280; }
+.header-controls { display: flex; align-items: center; gap: 10px; }
+select { font-size: 13px; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 8px; background: white; }
+.data-source { font-size: 11px; padding: 4px 10px; background: #D1FAE5; color: #2D6A4F; border-radius: 20px; font-weight: 500; }
+.metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 1.5rem; }
+.metric-card { background: white; border-radius: 10px; padding: 1rem; border: 1px solid #e5e7eb; }
+.metric-label { font-size: 12px; color: #6b7280; margin-bottom: 4px; }
+.metric-value { font-size: 24px; font-weight: 600; color: #1a1a1a; }
+.metric-unit { font-size: 13px; font-weight: 400; color: #6b7280; }
+.metric-status { font-size: 11px; margin-top: 4px; font-weight: 500; }
+.status-good { color: #2D6A4F; } .status-warn { color: #B45309; } .status-crit { color: #991B1B; }
+.main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 1.5rem 1.5rem; }
+.card { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem; }
+.card-title { font-size: 12px; font-weight: 600; color: #6b7280; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+.chart-area { height: 130px; display: flex; align-items: flex-end; gap: 12px; }
+.candle-group { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+.candle-label { font-size: 11px; color: #6b7280; }
+.candle-visual { display: flex; flex-direction: column; align-items: center; gap: 1px; width: 100%; }
+.candle-wick-top { width: 2px; background: #9ca3af; }
+.candle-body { width: 60%; border-radius: 2px; min-height: 8px; }
+.candle-wick-bottom { width: 2px; background: #9ca3af; }
+.candle-bullish { background: #2D6A4F; }
+.candle-bearish { background: #DC2626; }
+.candle-stats { font-size: 10px; color: #9ca3af; text-align: center; margin-top: 2px; }
+.npk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.npk-item { text-align: center; padding: 10px 8px; background: #F7F9F7; border-radius: 8px; }
+.npk-label { font-size: 11px; color: #6b7280; margin-bottom: 2px; }
+.npk-value { font-size: 20px; font-weight: 600; }
+.npk-n { color: #2D6A4F; } .npk-p { color: #92400E; } .npk-k { color: #1D4ED8; }
+.npk-bar-wrap { height: 4px; background: #e5e7eb; border-radius: 2px; margin-top: 6px; }
+.npk-bar-fill { height: 4px; border-radius: 2px; transition: width 0.4s; }
+.advisory-list { display: flex; flex-direction: column; gap: 8px; }
+.advisory-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border-radius: 8px; }
+.advisory-good { background: #F0FDF4; border-left: 3px solid #2D6A4F; }
+.advisory-warn { background: #FFFBEB; border-left: 3px solid #D97706; }
+.advisory-crit { background: #FEF2F2; border-left: 3px solid #DC2626; }
+.advisory-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+.icon-good { background: #2D6A4F; color: white; }
+.icon-warn { background: #D97706; color: white; }
+.icon-crit { background: #DC2626; color: white; }
+.advisory-text { font-size: 13px; line-height: 1.4; }
+.crop-suggestion { display: flex; align-items: center; gap: 12px; padding: 10px; background: #F7F9F7; border-radius: 8px; margin-bottom: 8px; }
+.crop-icon { width: 36px; height: 36px; border-radius: 8px; background: #D1FAE5; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.crop-name { font-size: 14px; font-weight: 600; }
+.crop-match { font-size: 12px; color: #6b7280; }
+.crop-score { margin-left: auto; font-size: 13px; font-weight: 600; color: #2D6A4F; }
+.footer { padding: 1rem 1.5rem; background: white; border-top: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-text { font-size: 12px; color: #9ca3af; }
+.loading { text-align: center; padding: 3rem; color: #6b7280; font-size: 14px; }
+.error-banner { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 12px 16px; margin: 1rem 1.5rem; font-size: 13px; color: #991B1B; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6 2 3 8 3 14c0 4 2.5 7 6 8 0-4 1-8 3-10-1 3-1 7 0 10 3.5-1 6-4 6-8 0-6-2-12-6-12z" fill="white"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-text">AgroSense</div>
+      <div class="logo-sub">Soil Data Analysis &amp; Crop Advisory System</div>
+    </div>
+  </div>
+  <div class="header-controls">
+    <span class="data-source" id="data-source">Loading...</span>
+    <select id="region" onchange="filterByRegion(this.value)">
+      <option>Andhra Pradesh</option>
+      <option>Maharashtra</option>
+      <option>Punjab</option>
+      <option>Karnataka</option>
+      <option>Tamil Nadu</option>
+    </select>
+  </div>
+</div>
+
+<div id="error-area"></div>
+
+<div class="metrics-row">
+  <div class="metric-card"><div class="metric-label">Avg Soil Moisture</div><div class="metric-value" id="moisture">--<span class="metric-unit">%</span></div><div class="metric-status" id="moisture-status">Loading...</div></div>
+  <div class="metric-card"><div class="metric-label">Avg Soil pH</div><div class="metric-value" id="ph">--</div><div class="metric-status status-good" id="ph-status">--</div></div>
+  <div class="metric-card"><div class="metric-label">Avg Temperature</div><div class="metric-value" id="temp">--<span class="metric-unit">°C</span></div><div class="metric-status status-good">Live data</div></div>
+  <div class="metric-card"><div class="metric-label">Avg Rainfall</div><div class="metric-value" id="rain">--<span class="metric-unit">mm</span></div><div class="metric-status" id="rain-status">--</div></div>
+</div>
+
+<div class="main-grid">
+  <div class="card">
+    <div class="card-title">Seasonal Moisture Candlestick Pattern</div>
+    <div class="chart-area" id="candle-chart"><div class="loading">Loading chart...</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">NPK Soil Nutrients (Regional Average)</div>
+    <div class="npk-grid">
+      <div class="npk-item"><div class="npk-label">Nitrogen (N)</div><div class="npk-value npk-n" id="npk-n">--</div><div class="npk-bar-wrap"><div class="npk-bar-fill" id="nbar" style="width:0%;background:#2D6A4F;"></div></div></div>
+      <div class="npk-item"><div class="npk-label">Phosphorus (P)</div><div class="npk-value npk-p" id="npk-p">--</div><div class="npk-bar-wrap"><div class="npk-bar-fill" id="pbar" style="width:0%;background:#92400E;"></div></div></div>
+      <div class="npk-item"><div class="npk-label">Potassium (K)</div><div class="npk-value npk-k" id="npk-k">--</div><div class="npk-bar-wrap"><div class="npk-bar-fill" id="kbar" style="width:0%;background:#1D4ED8;"></div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Crop Advisory</div>
+    <div class="advisory-list" id="advisory"><div class="loading">Loading advisories...</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Crops Found in Region</div>
+    <div id="crops"><div class="loading">Loading crops...</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-text" id="footer-text">Loading data from C++ pipeline output...</div>
+</div>
+
+<script>
+let allData = [];
+let allCandles = [];
+const cropEmojis = { rice: "🌾", wheat: "🌾", maize: "🌽", cotton: "🌿", soybean: "🫘", chickpea: "🫘", lentils: "🫘", banana: "🍌", ragi: "🌾", sunflower: "🌻", groundnut: "🥜", coffee: "☕", "red chilli": "🌶", jowar: "🌾", mustard: "🌱", turmeric: "🌿", paddy: "🌾", "moth beans": "🫘", mothbeans: "🫘" };
+
+function avg(arr, key) {
+  if (!arr.length) return 0;
+  return arr.reduce((s, d) => s + d[key], 0) / arr.length;
+}
+
+function round1(n) { return Math.round(n * 10) / 10; }
+
+function filterByRegion(region) {
+  const records = allData.filter(d => d.region === region);
+  if (!records.length) return;
+
+  const moisture = round1(avg(records, "moisture"));
+  const ph = round1(avg(records, "pH"));
+  const temp = round1(avg(records, "temperature"));
+  const rain = round1(avg(records, "rainfall"));
+  const n = Math.round(avg(records, "nitrogen"));
+  const p = Math.round(avg(records, "phosphorus"));
+  const k = Math.round(avg(records, "potassium"));
+
+  document.getElementById("moisture").innerHTML = moisture + '<span class="metric-unit">%</span>';
+  document.getElementById("ph").textContent = ph;
+  document.getElementById("temp").innerHTML = temp + '<span class="metric-unit">°C</span>';
+  document.getElementById("rain").innerHTML = rain + '<span class="metric-unit">mm</span>';
+  document.getElementById("npk-n").textContent = n;
+  document.getElementById("npk-p").textContent = p;
+  document.getElementById("npk-k").textContent = k;
+  document.getElementById("nbar").style.width = Math.min(n, 100) + "%";
+  document.getElementById("pbar").style.width = Math.min(p, 100) + "%";
+  document.getElementById("kbar").style.width = Math.min(k, 100) + "%";
+
+  const ms = document.getElementById("moisture-status");
+  ms.textContent = moisture > 70 ? "High — monitor waterlogging" : moisture > 50 ? "Optimal range" : "Low — irrigation needed";
+  ms.className = "metric-status " + (moisture > 70 ? "status-warn" : moisture > 50 ? "status-good" : "status-crit");
+
+  const rs = document.getElementById("rain-status");
+  rs.textContent = rain > 100 ? "Above average" : rain > 80 ? "Average" : "Below average";
+  rs.className = "metric-status " + (rain > 100 ? "status-good" : rain > 80 ? "status-good" : "status-warn");
+
+  // Advisory
+  const advisories = [];
+  if (moisture >= 50 && moisture <= 70) advisories.push({ type: "good", title: "Soil moisture optimal.", msg: "No irrigation needed for current conditions." });
+  else if (moisture > 70) advisories.push({ type: "warn", title: "High moisture detected.", msg: "Monitor for waterlogging risk." });
+  else advisories.push({ type: "crit", title: "Low soil moisture.", msg: "Irrigation recommended immediately." });
+
+  if (rain < 80) advisories.push({ type: "warn", title: "Rainfall below seasonal average.", msg: "Monitor moisture levels closely." });
+  else advisories.push({ type: "good", title: "Rainfall adequate.", msg: "Soil water levels are being maintained." });
+
+  if (k < 30) advisories.push({ type: "crit", title: "Potassium deficiency detected.", msg: "Apply 20 kg/hectare supplement." });
+  else advisories.push({ type: "good", title: "NPK levels satisfactory.", msg: "No nutrient supplementation needed." });
+
+  const icons = { good: ["icon-good", "✓"], warn: ["icon-warn", "!"], crit: ["icon-crit", "✕"] };
+  document.getElementById("advisory").innerHTML = advisories.map(a =>
+    `<div class="advisory-item advisory-${a.type}">
+      <div class="advisory-icon ${icons[a.type][0]}">${icons[a.type][1]}</div>
+      <div class="advisory-text"><strong>${a.title}</strong> ${a.msg}</div>
+    </div>`).join("");
+
+  // Crops
+  const cropCounts = {};
+  records.forEach(d => { cropCounts[d.crop] = (cropCounts[d.crop] || 0) + 1; });
+  const sorted = Object.entries(cropCounts).sort((a, b) => b[1] - a[1]).slice(0, 4);
+  const total = records.length;
+  document.getElementById("crops").innerHTML = sorted.map(([crop, count]) => {
+    const pct = Math.round(count / total * 100);
+    const emoji = cropEmojis[crop.toLowerCase()] || "🌱";
+    return `<div class="crop-suggestion">
+      <div class="crop-icon">${emoji}</div>
+      <div><div class="crop-name">${crop.charAt(0).toUpperCase() + crop.slice(1)}</div><div class="crop-match">${count} of ${total} records</div></div>
+      <div class="crop-score">${pct}% match</div>
+    </div>`;
+  }).join("");
+
+  // Candlestick chart
+  renderCandlesticks(allCandles);
+}
+
+function renderCandlesticks(candles) {
+  if (!candles.length) return;
+  const maxH = Math.max(...candles.map(c => c.high));
+  const chartEl = document.getElementById("candle-chart");
+  const scale = 90 / maxH;
+
+  chartEl.innerHTML = candles.map(c => {
+    const bullish = c.close >= c.open;
+    const bodyH = Math.max(8, Math.abs(c.close - c.open) * scale);
+    const wickTopH = Math.max(4, (c.high - Math.max(c.open, c.close)) * scale);
+    const wickBotH = Math.max(4, (Math.min(c.open, c.close) - c.low) * scale);
+    return `<div class="candle-group">
+      <div class="candle-visual">
+        <div class="candle-wick-top" style="height:${wickTopH}px"></div>
+        <div class="candle-body ${bullish ? 'candle-bullish' : 'candle-bearish'}" style="height:${bodyH}px"></div>
+        <div class="candle-wick-bottom" style="height:${wickBotH}px"></div>
+      </div>
+      <div class="candle-label">${c.season}</div>
+      <div class="candle-stats">H:${c.high} L:${c.low}</div>
+    </div>`;
+  }).join("");
+}
+
+// Load data from C++ pipeline output
+fetch("output.json")
+  .then(r => r.json())
+  .then(data => {
+    allData = data.records;
+    allCandles = data.candlesticks;
+    document.getElementById("data-source").textContent = "Live C++ Pipeline Data";
+    document.getElementById("footer-text").textContent = `Loaded ${allData.length} records from C++ pipeline | Kaggle Indian Crop Dataset`;
+    document.getElementById("error-area").innerHTML = "";
+    filterByRegion(document.getElementById("region").value);
+  })
+  .catch(() => {
+    document.getElementById("data-source").textContent = "Run agrosense.exe first";
+    document.getElementById("data-source").style.background = "#FEF2F2";
+    document.getElementById("data-source").style.color = "#991B1B";
+    document.getElementById("error-area").innerHTML = `
+      <div class="error-banner">
+        No pipeline data found. Run <strong>./agrosense</strong> in the terminal first to generate output.json, then refresh this page.
+      </div>`;
+    document.getElementById("footer-text").textContent = "Run agrosense.exe to connect live data";
+  });
+</script>
+</body>
+</html>

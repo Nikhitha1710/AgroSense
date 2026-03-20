@@ -1,0 +1,21 @@
+region,season,N,P,K,pH,moisture,temperature,rainfall,crop
+Andhra Pradesh,Kharif,90,42,43,6.5,65.0,20.8,82.0,rice
+Andhra Pradesh,Kharif,85,58,41,7.0,55.0,21.7,80.3,rice
+Andhra Pradesh,Rabi,60,55,44,6.0,70.0,23.0,85.0,maize
+Andhra Pradesh,Rabi,74,35,40,6.8,48.0,26.0,95.0,chickpea
+Maharashtra,Kharif,78,42,42,6.5,62.0,22.0,88.0,cotton
+Maharashtra,Kharif,69,18,37,5.8,58.0,20.0,103.0,soybean
+Maharashtra,Rabi,94,40,40,6.7,72.0,17.0,48.0,wheat
+Punjab,Rabi,104,18,30,6.7,68.0,15.0,51.0,wheat
+Punjab,Rabi,83,68,38,7.2,75.0,18.0,58.0,wheat
+Punjab,Kharif,82,40,40,6.5,62.0,23.0,90.0,rice
+Karnataka,Kharif,35,60,58,5.5,55.0,27.0,150.0,coffee
+Karnataka,Rabi,15,45,43,6.5,60.0,24.0,67.0,mothbeans
+Tamil Nadu,Kharif,80,47,40,6.5,65.0,28.0,110.0,rice
+Tamil Nadu,Rabi,62,59,43,6.8,58.0,25.0,85.0,banana
+Andhra Pradesh,Kharif,56,52,32,6.8,62.0,26.0,85.0,red chilli
+Andhra Pradesh,Kharif,48,38,28,7.1,45.0,28.0,72.0,red chilli
+Andhra Pradesh,Rabi,72,64,48,6.2,70.0,22.0,92.0,rice
+Maharashtra,Kharif,88,46,44,6.9,68.0,24.0,96.0,cotton
+Punjab,Kharif,90,40,40,6.5,70.0,20.0,88.0,rice
+Karnataka,Kharif,58,52,34,6.4,60.0,25.0,120.0,ragi
