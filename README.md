@@ -36,7 +36,7 @@ AgroSense/
 ## Dataset
 
 **Indian Crop Recommendation Dataset**
-Source: [Kaggle — atharvaingle/crop-recommendation-dataset](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset)
+Source: Created my own dataset for testing purposes
 
 Features: N, P, K (soil nutrients), pH, temperature, humidity, rainfall, crop label
 Records: 2,200 samples across multiple Indian agricultural regions
