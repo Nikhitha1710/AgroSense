@@ -4,7 +4,7 @@ A multi-layer agricultural data system that processes Indian soil and crop data 
 
 ---
 
-## Overview
+## Overview_
 
 AgroSense takes raw soil sensor readings — nitrogen, phosphorus, potassium, pH, moisture, temperature, and rainfall — and processes them through three layers:
 
