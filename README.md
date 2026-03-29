@@ -28,10 +28,10 @@ The system is designed as a three-layer pipeline architecture, where each layer 
 - Outputs probability-based crop recommendations
 
 **3. Web Visualization Layer**
-Built using HTML, CSS, and JavaScript
-Displays soil parameters and model predictions
-Provides an interactive region-based analysis dashboard
-Visualizes seasonal trends and nutrient levels
+- Built using HTML, CSS, and JavaScript
+- Displays soil parameters and model predictions
+- Provides an interactive region-based analysis dashboard
+- Visualizes seasonal trends and nutrient levels
 
 ---
 
@@ -54,12 +54,16 @@ AgroSense/
 
 ---
 
-## Dataset
+## Dataset 📊
 
 **Indian Crop Recommendation Dataset**
-Source: Created my own dataset for testing purposes
+Source: Indian Crop Recommendation Dataset (Kaggle-based, with minor modifications for testing)
 
-Features: N, P, K (soil nutrients), pH, temperature, humidity, rainfall, crop label
+Features: 
+- **Soil Nutrients:** Nitrogen (N), Phosphorus (P), Potassium (K) 
+- pH level, temperature, humidity, rainfall
+- crop label
+  
 Records: 2,200 samples across multiple Indian agricultural regions
 
 ---
