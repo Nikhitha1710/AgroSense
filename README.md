@@ -95,18 +95,21 @@ Open `web/index.html` in any browser. No server required.
 
 ---
 
-## Key Features 💡
+## Key Features 🔑
 
-- Multi-filter analysis using `set_intersection` (filter by region AND season simultaneously)
-- Seasonal soil moisture candlestick chart (Open/High/Low/Close pattern per season)
-- NPK deficiency detection with specific advisory output
-- Random Forest classifier with top-3 crop probability ranking
-- Interactive dashboard with region selector for Andhra Pradesh, Maharashtra, Punjab, Karnataka, Tamil Nadu
-- Colour-coded advisory system (green / amber / red) based on soil condition thresholds
+- Multi-layer system architecture (C++ → ML → Web integration)
+- Multi-criteria filtering for region and season-based data segmentation
+- NPK (Nitrogen, Phosphorus, Potassium) deficiency detection with advisory generation
+- Random Forest classifier for crop prediction with top-3 probability ranking
+- Seasonal soil moisture candlestick visualization (Open/High/Low/Close pattern per season)
+- Interactive web dashboard with region selector (Andhra Pradesh, Maharashtra, Punjab, Karnataka, Tamil Nadu)
+- Colour-coded soil health indicators (green / amber / red based on thresholds)
 
 ---
 
-## Sample Output
+## Output
+
+### 🖥️ Sample Output
 
 ```
 =========================================
@@ -130,7 +133,7 @@ Suggested crop: red chilli
       Kharif    55.0    68.0    90.0    48.0  [G]++++++
         Rabi    48.0    62.0    75.0    35.0  [G]+++++++
 ```
-
+### 🌾 Model Output
 ---
 
 ## Technologies Used 🛠️
