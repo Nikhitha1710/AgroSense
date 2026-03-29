@@ -2,19 +2,36 @@
 
 A multi-layer agricultural data system that processes Indian soil and crop data through a C++ pipeline, applies machine learning for crop prediction, and visualises results through an interactive web dashboard.
 
-# Goal
+# Goal 📌
 
 The goal of this project is to explore how data processing and machine learning can be combined to support agricultural decision-making.
 
 ---
 
-## Overview_
+## System Overview 🧩
 
-AgroSense takes raw soil sensor readings — nitrogen, phosphorus, potassium, pH, moisture, temperature, and rainfall — and processes them through three layers:
+AgroSense processes soil and environmental features such as nitrogen (N), phosphorus (P), potassium (K), pH level, moisture, temperature, and rainfall as input parameters for analysis and prediction.
 
-1. **C++ Data Pipeline** — loads CSV data, filters by region and season using `set_intersection`, computes seasonal soil moisture candlestick patterns, and generates crop advisories
-2. **Python ML Engine** — trains a Random Forest classifier on the Indian Crop Recommendation Dataset to predict the most suitable crop for given soil conditions
-3. **Web Dashboard** — interactive HTML/CSS/JavaScript interface displaying live soil metrics, NPK levels, seasonal moisture patterns, and crop recommendations for 5 Indian states
+The system is designed as a three-layer pipeline architecture, where each layer handles a specific stage of data processing, machine learning, and visualization.
+
+### System Architecture 🏗️ 
+**1. C++ Data Processing Layer**
+- Loads and parses structured soil dataset (CSV format)
+- Performs region and season-based filtering using STL algorithms
+- Generates statistical summaries of soil conditions
+- Computes seasonal moisture patterns for analysis
+
+**2. Python Machine Learning Layer**
+- Implements a Random Forest classifier using scikit-learn
+- Trains on soil nutrient and environmental parameters
+- Predicts suitable crop based on input conditions
+- Outputs probability-based crop recommendations
+
+**3. Web Visualization Layer**
+Built using HTML, CSS, and JavaScript
+Displays soil parameters and model predictions
+Provides an interactive region-based analysis dashboard
+Visualizes seasonal trends and nutrient levels
 
 ---
 
