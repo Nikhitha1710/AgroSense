@@ -1,4 +1,4 @@
-# AgroSense — Soil Data Analysis & Crop Advisory System
+# AgroSense — Soil Data Analysis & Crop Advisory System 🌾
 
 A multi-layer agricultural data system that processes Indian soil and crop data through a C++ pipeline, applies machine learning for crop prediction, and visualises results through an interactive web dashboard.
 
