@@ -2,7 +2,7 @@
 
 A multi-layer agricultural data system that processes Indian soil and crop data through a C++ pipeline, applies machine learning for crop prediction, and visualises results through an interactive web dashboard.
 
-# Goal 📌
+# Goal 🎯
 
 The goal of this project is to explore how data processing and machine learning can be combined to support agricultural decision-making.
 
@@ -35,7 +35,7 @@ The system is designed as a three-layer pipeline architecture, where each layer 
 
 ---
 
-## Project Structure
+## Project Structure 🧩
 
 ```
 AgroSense/
@@ -60,15 +60,15 @@ AgroSense/
 Source: Indian Crop Recommendation Dataset (Kaggle-based, with minor modifications for testing)
 
 Features: 
-- **Soil Nutrients:** Nitrogen (N), Phosphorus (P), Potassium (K) 
-- pH level, temperature, humidity, rainfall
-- crop label
+- Soil Nutrients: Nitrogen (N), Phosphorus (P), Potassium (K) 
+- Environmental Variables: pH level, temperature, humidity, rainfall
+- Target Variable: crop label
   
-Records: 2,200 samples across multiple Indian agricultural regions
+Records: subset of the Indian Crop Recommendation dataset used for experimentation
 
 ---
 
-## How to Run
+## How to Run 🚀
 
 ### C++ Pipeline
 
@@ -90,7 +90,7 @@ Open `web/index.html` in any browser. No server required.
 
 ---
 
-## Features
+## Key Features 💡
 
 - Multi-filter analysis using `set_intersection` (filter by region AND season simultaneously)
 - Seasonal soil moisture candlestick chart (Open/High/Low/Close pattern per season)
@@ -128,12 +128,13 @@ Suggested crop: red chilli
 
 ---
 
-## Technologies Used
+## Technologies Used 🛠️
 
-- C++17 — data pipeline, OOP design, STL algorithms
-- Python 3 — scikit-learn, pandas, NumPy
-- HTML / CSS / JavaScript — interactive frontend dashboard
-- Dataset — Kaggle (Indian Crop Recommendation Dataset)
+- C++17 (data pipeline, OOP design, STL algorithms)
+- Python 3 (scikit-learn, pandas, NumPy)
+- JavaScript (frontend logic)
+- HTML / CSS (Interactive Dashboard)
+- Kaggle Dataset (Indian Crop Recommendation Dataset)
 
 ---
 
