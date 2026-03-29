@@ -2,6 +2,10 @@
 
 A multi-layer agricultural data system that processes Indian soil and crop data through a C++ pipeline, applies machine learning for crop prediction, and visualises results through an interactive web dashboard.
 
+# Goal
+
+The goal of this project is to explore how data processing and machine learning can be combined to support agricultural decision-making.
+
 ---
 
 ## Overview_
