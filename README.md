@@ -33,6 +33,11 @@ The system is designed as a three-layer pipeline architecture, where each layer 
 - Provides an interactive region-based analysis dashboard
 - Visualizes seasonal trends and nutrient levels
 
+## How the System Works ⚙️
+1. Soil data is loaded and processed in C++
+2. Cleaned data is passed to ML model for training/prediction
+3. Predictions are displayed through a web-based dashboard
+
 ---
 
 ## Project Structure 🧩
@@ -130,16 +135,16 @@ Suggested crop: red chilli
 
 ## Technologies Used 🛠️
 
-- C++17 (data pipeline, OOP design, STL algorithms)
-- Python 3 (scikit-learn, pandas, NumPy)
+- C++17: data pipeline, OOP design, STL algorithms
+- Python 3: scikit-learn, pandas, NumPy
 - JavaScript (frontend logic)
 - HTML / CSS (Interactive Dashboard)
 - Kaggle Dataset (Indian Crop Recommendation Dataset)
 
 ---
 
-## Author
+## Built By 🙋‍♀️😄
 
 Cheparthi Sri Nikhitha
-BSc Computer Science — University of London
-[LinkedIn](https://www.linkedin.com/in/cheparthi-sri-nikhitha-886b381b1)
+- [LinkedIn](https://www.linkedin.com/in/cheparthi-sri-nikhitha-886b381b1)
+- [Portfolio](https://nikhithaprofessionalportfolio.netlify.app/)
