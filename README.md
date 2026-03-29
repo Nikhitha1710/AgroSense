@@ -1,8 +1,8 @@
-# AgroSense — Soil Data Analysis & Crop Advisory System 🌾
+# AgroSense: Soil Data Analysis & Crop Advisory System 🌾
 
 A multi-layer agricultural data system that processes Indian soil and crop data through a C++ pipeline, applies machine learning for crop prediction, and visualises results through an interactive web dashboard.
 
-# Goal 🎯
+## Goal 🎯
 
 The goal of this project is to explore how data processing and machine learning can be combined to support agricultural decision-making.
 
@@ -33,7 +33,7 @@ The system is designed as a three-layer pipeline architecture, where each layer 
 - Provides an interactive region-based analysis dashboard
 - Visualizes seasonal trends and nutrient levels
 
-## How the System Works ⚙️
+### How the System Works ⚙️
 1. Soil data is loaded and processed in C++
 2. Cleaned data is passed to ML model for training/prediction
 3. Predictions are displayed through a web-based dashboard
@@ -107,9 +107,7 @@ Open `web/index.html` in any browser. No server required.
 
 ---
 
-## Output
-
-### 🖥️ Sample Output
+## 🖥️ Sample Output
 
 ```
 =========================================
@@ -133,7 +131,10 @@ Suggested crop: red chilli
       Kharif    55.0    68.0    90.0    48.0  [G]++++++
         Rabi    48.0    62.0    75.0    35.0  [G]+++++++
 ```
-### 🌾 Model Output
+## 🌾 Model Output
+<img width="1916" height="870" alt="image" src="https://github.com/user-attachments/assets/4b0af224-c144-47ce-a68e-ff0a03e033b5" />
+
+
 ---
 
 ## Technologies Used 🛠️
