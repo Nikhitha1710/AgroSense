@@ -155,7 +155,7 @@ A statistical data analysis notebook that explores soil and climate patterns inf
 
 👉 This analysis supports and explains the ML predictions used in AgroSense.
 
-**Check it out:** [AgroSense](https://github.com/Nikhitha1710/AgroSense_CropAnalysis) 
+**Check it out:** [AgroSenseCropAnalysis](https://github.com/Nikhitha1710/AgroSense_CropAnalysis) 
 
 ---
 
