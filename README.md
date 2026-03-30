@@ -147,6 +147,20 @@ Suggested crop: red chilli
 
 ---
 
+## Related Project 🔗📁
+
+### Indian Crop Yield Analysis 🌾
+
+A statistical data analysis notebook that explores soil and climate patterns influencing crop suitability across India.
+
+👉 This analysis supports and explains the ML predictions used in AgroSense.
+
+**Check it out:** [AgroSense](https://github.com/Nikhitha1710/AgroSense_CropAnalysis) 
+
+---
+
+---
+
 ## Built By 🙋‍♀️😄
 
 Cheparthi Sri Nikhitha
